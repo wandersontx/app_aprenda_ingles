@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:audioplayers/audio_cache.dart';
+
 
 class Bichos extends StatefulWidget {
   @override
@@ -7,6 +9,21 @@ class Bichos extends StatefulWidget {
 
 class _BichosState extends State<Bichos> {
   
+  AudioCache _audioCache = AudioCache(prefix: 'audios/');
+
+  _executar(String nomeAudio){
+    _audioCache.play(nomeAudio+'.mp3');
+  }
+
+  @override
+    void initState() {
+      super.initState();
+      _audioCache.loadAll([
+        'cao.mp3', 'gato.mp3', 'leao.mp3', 
+        'macao.mp3', 'ovelha.mp3', 'vaca.mp3',
+      ]);
+    }
+
   @override
   Widget build(BuildContext context) {
    
@@ -15,27 +32,39 @@ class _BichosState extends State<Bichos> {
       childAspectRatio: MediaQuery.of(context).size.aspectRatio * 2,
       children: [
         GestureDetector(
-          onTap: (){},
+          onTap: (){
+            _executar('cao');
+          },
           child: Image.asset('assets/imagens/cao.png'),
         ),
         GestureDetector(
-          onTap: (){},
+          onTap: (){
+            _executar('gato');
+          },
           child: Image.asset('assets/imagens/gato.png'),
         ),
         GestureDetector(
-          onTap: (){},
+          onTap: (){
+            _executar('ovelha');
+          },
           child: Image.asset('assets/imagens/ovelha.png'),
         ),
         GestureDetector(
-          onTap: (){},
+          onTap: (){
+            _executar('macaco');
+          },
           child: Image.asset('assets/imagens/macaco.png'),
         ),
         GestureDetector(
-          onTap: (){},
+          onTap: (){
+            _executar('vaca');
+          },
           child: Image.asset('assets/imagens/vaca.png'),
         ),
         GestureDetector(
-          onTap: (){},
+          onTap: (){
+            _executar('leao');
+          },
           child: Image.asset('assets/imagens/leao.png'),
         ),
 
